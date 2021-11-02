@@ -16,5 +16,3 @@ A traves de este sitio web gestionamos todos los datos relacionados con nuestros
 Tenemos un apartado de blog y noticias en el que exponemos temas relacionados con el cambio climático y con la asociación. Contamos con una página de contacto y enlaces a redes sociales.<br>
 
 #Relacion entre modelos
-
-![Esquema-RelacionModelos](https://user-images.githubusercontent.com/91872191/139837962-b2926841-eb3e-43b7-b4a8-ff87455f034a.png)
