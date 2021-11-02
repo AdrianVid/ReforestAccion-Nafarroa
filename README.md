@@ -17,3 +17,4 @@ Tenemos un apartado de blog y noticias en el que exponemos temas relacionados co
 
 #Relacion entre modelos
 
+![Esquema-RelacionModelos](https://user-images.githubusercontent.com/91872191/139837962-b2926841-eb3e-43b7-b4a8-ff87455f034a.png)
