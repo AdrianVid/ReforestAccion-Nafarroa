@@ -17,4 +17,4 @@ Tenemos un apartado de blog y noticias en el que exponemos temas relacionados co
 
 #Relacion entre modelos
 
-(https://github.com/AdrianVid/ReforestAccion-Nafarroa/blob/main/Esquema-modelos.fig)
+![Image text](https://github.com/AdrianVid/ReforestAccion-Nafarroa/blob/main/Esquema-modelos.fig)
