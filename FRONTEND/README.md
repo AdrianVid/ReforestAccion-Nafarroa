@@ -5,7 +5,7 @@ ReforestAccion Nafarroa es una asociación Navarra sin ánimo de lucro que cree 
 Con este sitio web quieren tener un mayor impacto en la sociedad, ser mas visibles y poder llegar a mas gente que crea en sus valores, los comparta y quiera formar parte de esta organización. Hacer públicas todas sus plantaciones e informar de futuros eventos y noticias.<br>
 
 #Descripción funcional
-
+![Casos-de-uso](https://github.com/AdrianVid/ReforestAccion-Nafarroa/blob/main/Casos%20de%20uso.png)
 En ReforestAcción Nafarroa lo importante son los árboles y en su página web no iba a ser diferente.<br>
 Llevamos un control del número total de árboles plantados, sus distintas clases y las diferentes localidades donde se encuentran. Podemos ver en el mapa donde se encuentra cada arbol. Todo acompañado de documentación, descripccion del proyecto e imágenes.
 <br>
