@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "proxy": "htpp/LOCALHOST:5000/Api",
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js"
