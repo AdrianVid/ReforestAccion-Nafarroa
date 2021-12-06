@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+.container2 {
+  background-color: #606d00;
+}
+.box {
+  padding: 40px;
+  margin: auto;
+  border: 2px solid gray;
+  background-color: burlywood;
+  width: 300px;
+  text-align: center;
+  font-size: 16px;
+}
