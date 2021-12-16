@@ -40,7 +40,10 @@ PlantationRoute.post("/", async (req, res) => {
 //Buscar todas las plantaciones
 PlantationRoute.get("/", async (req, res) => {
   try {
-    const plantations = await Plantation.find({});
+    const plantations = await Plantation.find({}).populate({
+      path: "arboles.arbol",
+      select: "nombre",
+    });
     return res.json({
       success: true,
       plantations,
@@ -58,7 +61,10 @@ PlantationRoute.get("/", async (req, res) => {
 PlantationRoute.get("/find/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const plantation = await Plantation.findById(id);
+    const plantation = await Plantation.findById(id).populate({
+      path: "arboles.arbol",
+      select: "nombre",
+    });
     return res.json({
       success: true,
       plantation,
@@ -115,20 +121,17 @@ PlantationRoute.put("/find/:id/arboles", async (req, res) => {
       arbol,
       cantidad,
     };
-    const { usuaro } = req.user;
 
     let plantacion = await Plantation.findById(id);
     let arbolP = await Tree.findById(arbol);
-    let usuario = await Usuario.findById(usuaro);
-
-    console.log(usuaro);
+    /* let usuario = await Usuario.findById(usuaro);
 
     if (usuario.roles !== "admin") {
       return res.status(400).json({
         succes: false,
         message: `No tienes autorizacion`,
       });
-    }
+    }*/
     let arbolEncontrado = plantacion.arboles.find(function (plantado) {
       if (plantado.arbol.equals(arbol)) {
         return true;

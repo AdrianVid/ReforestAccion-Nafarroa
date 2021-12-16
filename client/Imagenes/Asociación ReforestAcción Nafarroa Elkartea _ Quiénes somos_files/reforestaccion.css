@@ -1,0 +1,558 @@
+@charset "UTF-8";
+
+::-moz-selection { color: #E9D975;  background: #4F3F33; }
+::selection      { color: #E9D975;  background: #4F3F33; }
+
+
+/* Fundido */
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+/* Generales */
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: #4F3F33;
+}
+h1 {
+    font-weight: 900;
+    font-size: 3em;
+    color: #FFF;
+    margin-top: -120px;
+}
+h2 {
+    font-weight: 700;
+    font-size: 1.875em;
+    margin-bottom: 40px;
+}
+span.subrayado {
+    background-color: #E9D975;
+}
+p {
+    font-weight: 400;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+p b {
+    font-weight: 700;
+}
+p a {
+    font-weight: 700;
+    background-color: #E9D975;
+    text-decoration: none;
+    color: #4F3F33;
+    transition: background 0.3s ease;
+}
+p a:hover {
+    background-color: #fff;
+}
+.centrar ul {
+    font-weight: 700;
+    list-style-type: '_';
+    margin-left: 8px;
+    margin-top: 30px;
+}
+ul li p {
+    font-weight: 700;
+    color: #606D00;
+    margin-bottom: 0.5em;
+}
+p.subtitulo {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+/* -------------------------------- 
+
+1. Auto-Hiding Navigation - Simple
+
+-------------------------------- */
+.cd-auto-hide-header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background: #E9D975;
+  /* Force Hardware Acceleration */
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+.cd-auto-hide-header::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.cd-auto-hide-header.is-hidden {
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+@media only screen and (min-width: 1024px) {
+  .cd-auto-hide-header {
+    height: 80px;
+  }
+}
+
+.cd-auto-hide-header .logo,
+.cd-auto-hide-header .nav-trigger {
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.cd-auto-hide-header .logo {
+  left: 5%;
+}
+.cd-auto-hide-header .logo a, .cd-auto-hide-header .logo img {
+  display: block;
+    width: 276px;
+    margin-top: -40px;
+}
+
+.cd-auto-hide-header .nav-trigger {
+  /* vertically align its content */
+  display: table;
+  height: 100%;
+  margin-right: 5%;
+  font-size: 1em;
+  color: #606D00; 
+  font-weight: bold;
+  right: 0;
+    text-decoration: none;
+}
+.cd-auto-hide-header .nav-trigger span {
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: middle;
+}
+.cd-auto-hide-header .nav-trigger em, .cd-auto-hide-header .nav-trigger em::after, .cd-auto-hide-header .nav-trigger em::before {
+  /* this is the menu icon */
+  display: block;
+  position: relative;
+  height: 2px;
+  width: 22px;
+  background-color: #606D00; 
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.cd-auto-hide-header .nav-trigger em {
+  /* this is the menu central line */
+  margin: 6px auto 14px;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+}
+.cd-auto-hide-header .nav-trigger em::before, .cd-auto-hide-header .nav-trigger em::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  -webkit-transition: -webkit-transform .2s;
+  transition: -webkit-transform .2s;
+  transition: transform .2s;
+  transition: transform .2s, -webkit-transform .2s;
+}
+.cd-auto-hide-header .nav-trigger em::before {
+  /* this is the menu icon top line */
+  -webkit-transform: translateY(-6px);
+      -ms-transform: translateY(-6px);
+          transform: translateY(-6px);
+}
+.cd-auto-hide-header .nav-trigger em::after {
+  /* this is the menu icon bottom line */
+  -webkit-transform: translateY(6px);
+      -ms-transform: translateY(6px);
+          transform: translateY(6px);
+}
+@media only screen and (min-width: 1024px) {
+  .cd-auto-hide-header .nav-trigger {
+    display: none;
+  }
+}
+
+.cd-auto-hide-header.nav-open .nav-trigger em {
+  /* transform menu icon into a 'X' icon */
+  background-color: rgba(255, 255, 255, 0);
+}
+.cd-auto-hide-header.nav-open .nav-trigger em::before {
+  /* rotate top line */
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.cd-auto-hide-header.nav-open .nav-trigger em::after {
+  /* rotate bottom line */
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.cd-primary-nav {
+  display: inline-block;
+  float: right;
+  height: 100%;
+  padding-right: 5%;
+    font-size: 1em;
+    font-weight: 700;
+}
+.cd-primary-nav > ul {
+  position: absolute;
+  z-index: 2;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  background-color: #E9D975;
+  display: none;
+  box-shadow: 0 14px 20px rgba(0, 0, 0, 0.2);
+}
+.cd-primary-nav > ul a {
+  /* target primary-nav links */
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 5%;
+  color: #606D00; 
+  border-top: 1px solid #f2f2f2;
+    text-decoration: none;
+}
+.cd-primary-nav > ul a.unete {
+  /* target primary-nav links */
+  background-color: #EBEBEB;
+    color: #4F3F33;
+}
+.cd-primary-nav > ul a:hover, .cd-primary-nav > ul a.active {
+  color: #4F3F33;
+    background-color:rgba(96,109,0,0.1);
+}
+.cd-primary-nav > ul a.unete:hover, .cd-primary-nav > ul a.active {
+    background-color: #fff;
+}
+@media only screen and (min-width: 1024px) {
+.cd-auto-hide-header {
+  height: 180px;
+}
+  .cd-primary-nav {
+    /* vertically align its content */
+    display: table;
+  }
+  .cd-primary-nav > ul {
+    /* vertically align inside parent element */
+    display: table-cell;
+    vertical-align: middle;
+    /* reset mobile style */
+    position: relative;
+    width: auto;
+    top: 0;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .cd-primary-nav > ul::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+  .cd-primary-nav > ul li {
+    display: inline-flex;
+    margin-right: 0.6em;
+  }
+  .cd-primary-nav > ul li:last-of-type {
+    margin-right: 0;
+  }
+  .cd-primary-nav > ul a {
+    /* reset mobile style */
+    height: auto;
+    line-height: normal;
+    padding: 5px 12px;
+      border: none;
+    border-radius: 25px;
+      display: block;
+      transition: background .3s ease;
+  }
+  .cd-primary-nav > ul a.unete {
+    /* reset mobile style */
+    padding: 15px 22px;
+      background-color: #EBEBEB;
+      color: #4F3F33;
+      font-weight: 900;
+  }
+.cd-primary-nav > ul a:hover, .cd-primary-nav > ul a.active {
+  color: #4F3F33;
+    background-color:rgba(96,109,0,0.1);
+}
+.cd-primary-nav > ul a.unete:hover, .cd-primary-nav > ul a.active {
+    background-color: #fff;
+}
+}
+
+.nav-open .cd-primary-nav ul,
+.cd-primary-nav ul:target {
+  /* 
+  	show primary nav - mobile only 
+  	:target is used to show navigation on no-js devices
+  */
+  display: block;
+}
+@media only screen and (min-width: 1024px) {
+  .nav-open .cd-primary-nav ul,
+  .cd-primary-nav ul:target {
+    display: table-cell;
+  }
+}
+
+/* -------------------------------- 
+
+Resto
+
+-------------------------------- */
+.parallax-window {
+    min-height: 550px;
+    background: transparent;
+}
+.fondohome {
+    width: 100%;
+    height: 100vh;
+    background-color: #606D00;
+    z-index: -2;
+    opacity: 1;
+    mix-blend-mode: multiply;
+}
+.videofondo {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		top:0;
+		right:0;
+		width: 100vw;
+		height: 100vh;
+		background-size: 100% 100%;
+ 		background-color: black; /* in case the video doesn't fit the whole page*/
+  		background-image: /* our video */;
+  		background-position: center center;
+  		background-size: contain;
+   		object-fit: cover; /*cover video background */
+   		z-index: -3;
+}
+/*solves problem with overflowing video in Mac with Chrome */
+	#section0{
+		overflow: hidden;
+	}
+/* Hiding video controls
+* See: https://css-tricks.com/custom-controls-in-html5-video-full-screen/
+	* --------------------------------------- */
+	video::-webkit-media-controls {
+	  display:none !important;
+	}
+
+.textohome {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    font-weight: 900;
+    font-size: 3.5vw;
+    color: #FFF;
+}
+.centrartitulo {
+    max-width: 1280px;
+    width: 84%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.centrar {
+    max-width: 1280px;
+    width: 84%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+.centrarunete {
+    max-width: 1280px;
+    width: 84%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+.centrarencol {
+    max-width: 1280px;
+    width: 84%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+}
+.centrardentro {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.col75 {
+    width: 75%;
+}
+footer {
+    max-width: 1280px;
+    width: 84%;
+    margin: 100px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: solid 1px #606D00; 
+    padding: 50px 0;
+}
+footer p {
+    color: #606D00; 
+    font-style: italic;
+    margin-bottom: 0;
+}
+footer img {
+    width: 230px;
+    height: auto;
+}
+.col50 {
+    width: 46%;
+}
+.col50 img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.col50 img:last-of-type {
+    margin-bottom: 0;
+}
+.elementocontacto {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.5em;
+}
+.elementocontacto img {
+    height: 30px;
+    margin-right: 15px;
+}
+
+
+@media all and (max-width: 900px) {
+.col75 {
+    width: 100%;
+}
+}
+
+@media all and (max-width: 800px) {
+.centrar {
+    flex-direction: column;
+}
+.centrarunete {
+    flex-direction: column;
+}
+.centrardentro {
+    flex-direction: column;
+}
+.col50 {
+    width: 100%;
+}
+.centrarunete .col50 {
+    margin-top: 50px;
+}
+.centrarunete .col50:first-of-type {
+    margin-top: 0;
+}
+}
+    
+@media all and (max-width: 600px) {
+.elementocontacto {
+    font-size: 1em;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.elementocontacto img {
+    margin-bottom: 5px;
+}
+footer {
+    flex-direction: column;
+    align-items: flex-start;
+}
+footer p {
+    margin-bottom: 40px;
+}
+.textohome {
+    font-size: 1.5em;
+}
+}
+
+@media all and (max-width: 450px) {
+.cd-auto-hide-header {
+  height: 140px;
+}
+.cd-auto-hide-header .logo a, .cd-auto-hide-header .logo img {
+    width: 200px;
+    margin-top: -35px;
+}
+.cd-primary-nav > ul {
+  top: 140px;
+}
+.parallax-window {
+    min-height: 400px;
+    background: transparent;
+}
+h1 {
+    font-size: 2em;
+    margin-top: -80px;
+}
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+p.subtitulo {
+    font-size: 1.25em;
+}
+.textohome {
+    font-size: 1.25em;
+}
+}

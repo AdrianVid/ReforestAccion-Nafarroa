@@ -11,10 +11,7 @@ const PlantationSchema = new mongoose.Schema({
   ],
   arboles: [
     {
-      arbol: {
-        type: mongoose.Types.ObjectId,
-        ref: "Arbol",
-      },
+      arbol: { type: mongoose.Types.ObjectId, ref: "Tree" },
       cantidad: { type: Number },
       apadrinados: { type: Number, default: 0 },
     },

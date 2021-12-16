@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Registro from "./views/Registro";
 import LogIn from "./views/LogIn.js";
+import CerrarSesion from "./views/CerrarSesion";
 import MiCuenta from "./views/Micuenta";
 import MisPlantaciones from "./views/Misplantaciones";
 import MisArboles from "./views/Misarboles";
@@ -15,6 +16,8 @@ import Arboles from "./views/Arboles";
 import Arbol from "./views/Arbol";
 import Plantaciones from "./views/Plantaciones";
 import Plantacion from "./views/Plantacion";
+import RequireAuth from "./utils/RequireAuth";
+import BorrarCuenta from "./views/BorrarCuenta";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,12 +27,15 @@ ReactDOM.render(
         <Route path="/home" element={<Home />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/micuenta" element={<MiCuenta />} />
-        <Route path="/misplantaciones" element={<MisPlantaciones />} />
-        <Route path="/misarboles" element={<MisArboles />} />
+        <Route element={<RequireAuth />}>
+          <Route path="/micuenta" element={<MiCuenta />} />
+          <Route path="/misplantaciones" element={<MisPlantaciones />} />
+          <Route path="/misarboles" element={<MisArboles />} />
+          <Route path="/salir" element={<CerrarSesion />} />
+          <Route path="/eliminar" element={<BorrarCuenta />} />
+        </Route>
         <Route path="/arboles" element={<Arboles />} />
         <Route path="/arboles/:arbolId" element={<Arbol />} />
-
         <Route path="/plantaciones" element={<Plantaciones />} />
         <Route path="/plantaciones/:plantacionId" element={<Plantacion />} />
       </Routes>

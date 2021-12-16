@@ -1,12 +1,29 @@
 const express = require("express");
+const cloudinary = require("../client/src/utils/cloudinary");
+const upload = require("../client/src/utils/multer");
 const { checkToken } = require("../middleware");
 const Tree = require("../modelos/Tree");
 const TreeRoute = express.Router();
 
 //Crear árbol
-TreeRoute.post("/", checkToken, async (req, res) => {
+TreeRoute.post("/", upload.single("imagen"), checkToken, async (req, res) => {
   try {
-    const { nombre, nombreTecnico, familia, especie, hoja } = req.body;
+    let result;
+    if (req.file) {
+      result = await cloudinary.uploader.upload(req.file.path);
+    }
+    const {
+      nombre,
+      nombreTecnico,
+      familia,
+      especie,
+      hoja,
+      imagen,
+      cloudinary_id,
+    } = req.body;
+
+    console.log(upload);
+    console.log(result);
 
     if (!nombre || !nombreTecnico || !familia || !especie || !hoja) {
       return res.status(201).json({
@@ -20,6 +37,8 @@ TreeRoute.post("/", checkToken, async (req, res) => {
       familia,
       especie,
       hoja,
+      imagen: result?.secure_url,
+      cloudinary_id: result?.public_id,
     });
 
     const newTree = await tree.save();

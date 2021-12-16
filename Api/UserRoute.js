@@ -8,7 +8,6 @@ const UserRoute = express.Router();
 //Buscar todos los usuarios
 UserRoute.get("/", async (req, res) => {
   try {
-    const { id } = req.user;
     const users = await User.find({});
     return res.json({
       success: true,
@@ -26,7 +25,7 @@ UserRoute.get("/", async (req, res) => {
 //Buscar un usuario x id
 UserRoute.get("/find/:id", async (req, res) => {
   try {
-    const { id } = req.user;
+    const { id } = req.params;
     const user = await User.findById(id);
     return res.json({
       success: true,
@@ -42,10 +41,20 @@ UserRoute.get("/find/:id", async (req, res) => {
 });
 
 //Mi usuario
-UserRoute.get("/find/myuser", checkToken, async (req, res) => {
+UserRoute.get("/myuser", async (req, res) => {
   try {
     const { id } = req.user;
-    const user = await User.findById(id);
+    const user = await User.findById(id)
+      .select("-contraseña")
+      .populate("plantaciones", "lugar")
+      .populate({
+        path: "arbolesApadrinados.plantacion",
+        select: "lugar",
+      })
+      .populate({
+        path: "arbolesApadrinados.arbol",
+        select: "nombre",
+      });
     return res.json({
       success: true,
       user,
@@ -60,7 +69,7 @@ UserRoute.get("/find/myuser", checkToken, async (req, res) => {
 });
 
 //Modificar usuario
-UserRoute.put("/find/update", checkToken, async (req, res) => {
+UserRoute.put("/find/update", async (req, res) => {
   try {
     const { id } = req.user;
     const { nombre, email, contraseña, plantaciones, arbolesApadrinados } =
@@ -104,14 +113,14 @@ UserRoute.put("/find/plantaciones", async (req, res) => {
   try {
     const { id } = req.user;
     const { plantaciones } = req.body;
-    let usuario = await User.findById(id);
+    let usuario = await User.findById(id).select("-contraseña");
 
-    if (usuario.roles !== "admin") {
+    /* if (usuario.roles !== "admin") {
       return res.status(400).json({
         succes: false,
         message: `No tienes autorizacion`,
       });
-    }
+    }*/
 
     if (!plantaciones) {
       return res.status(400).json({
@@ -128,12 +137,24 @@ UserRoute.put("/find/plantaciones", async (req, res) => {
         message: `La plantacion no existe`,
       });
     }
-    if (plantaciones) {
-      usuario.plantaciones = plantaciones;
+    let usuarioPlantacion = plantacionA.participantes.find(function (
+      voluntario
+    ) {
+      if (voluntario.equals(id)) {
+        return true;
+      }
+      return false;
+    });
+    if (usuarioPlantacion) {
+      return res.status(400).json({
+        succes: false,
+        message: `Ya estas inscrito en esta plantacion`,
+      });
     }
+    plantacionA.participantes.push(id);
+    usuario.plantaciones.push(plantaciones);
     const newUser = await usuario.save();
 
-    plantacionA.participantes.push(usuario);
     await plantacionA.save();
 
     return res.status(201).json({
@@ -316,16 +337,8 @@ UserRoute.put("/find/apadrinados", async (req, res) => {
     }
     const arbolesApadrinados = { plantacion, arbol, cantidad };
     usuario.arbolesApadrinados.push(arbolesApadrinados);
-
-    console.log(usuario.contraseña);
-
-    const userAct = await usuario.save();
-
-    return res.status(201).json({
-      success: true,
-      message: `Has apadrinado ${cantidad} ${arbolA.nombre}s de la plantacion de ${plantacionA.lugar}`,
-      arbolesApadrinados: userAct,
-    });
+    console.log(usuario.arbolesApadrinados);
+    console.log(arbolesApadrinados);
   } catch (err) {
     console.log(err);
     return res.status(400).json({

@@ -2,43 +2,34 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Image from "react-bootstrap/Image";
+import { useState } from "react";
 
 const BarraNavegacion = () => {
+  const [expanded, setExpanded] = useState(false);
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
-          <Image src="client\src\reforestaccion-nafarroa-logo.png" />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar
+        expanded={expanded}
+        collapseOnSelect
+        expand="lg"
+        className="color-nav"
+        variant="dark"
+      >
+        <Navbar.Brand href="/">REFORESTACCION</Navbar.Brand>
+        <Navbar.Toggle
+          onClick={() => setExpanded(expanded ? false : "expanded")}
+          aria-controls="responsive-navbar-nav"
+        />
         <Navbar.Collapse>
           <Nav>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              Inicio
-            </NavLink>
-            <NavLink
-              to="/home"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              Home
-            </NavLink>
-
             <NavLink
               to="/arboles"
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
               }
+              onClick={() => setExpanded(false)}
             >
-              {" "}
-              Arboles{" "}
+              <p className="letras-nav">Arboles</p>
             </NavLink>
 
             <NavLink
@@ -46,9 +37,18 @@ const BarraNavegacion = () => {
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
               }
+              onClick={() => setExpanded(false)}
             >
-              {" "}
-              Plantaciones{" "}
+              <p className="letras-nav">Plantaciones</p>
+            </NavLink>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              onClick={() => setExpanded(false)}
+            >
+              <p className="letras-nav">Iniciar sesión</p>
             </NavLink>
           </Nav>
         </Navbar.Collapse>

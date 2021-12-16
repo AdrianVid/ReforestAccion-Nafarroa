@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema({
       },
       arbol: {
         type: mongoose.Types.ObjectId,
-        ref: "Arbol",
+        ref: "Tree",
       },
       cantidad: {
         type: Number,
