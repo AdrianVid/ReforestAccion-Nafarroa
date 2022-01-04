@@ -1,10 +1,17 @@
 # ReforestAccion-Nafarroa
 
-ReforestAccion Nafarroa es una asociación Navarra sin ánimo de lucro que cree en la importancia de tener el mayor espacio verde posible en nuestro planeta. Los árboles son una parte clave para la lucha contra el cambio climático y contra la desertización de la tierra. Su proposito es muy claro, plantar la mayor cantidad de arboles posibles en espacios publicos o privados cedidos para tal proposito. Todo esto se lleva a cabo a través de sus socios y voluntarios.
+ReforestAccion Nafarroa es una asociación Navarra sin ánimo de lucro. Su proposito es muy claro, plantar la mayor cantidad de arboles posibles en espacios publicos o privados cedidos para tal proposito. Todo esto se lleva a cabo a través de sus socios y voluntarios.
 <br>
 Con este sitio web quieren tener un mayor impacto en la sociedad, ser mas visibles y poder llegar a mas gente que crea en sus valores, los comparta y quiera formar parte de esta organización. Hacer públicas todas sus plantaciones e informar de futuros eventos y noticias.<br>
+##Instalacion
 
-#Descripción funcional
+Instalar NodeJs y en la terminal de tu proyecto hacer un npm init.
+Instalamos express y mongoose. Necesitaremos tambien bcrypt y jsonwebtoken para gestionar las contraseñas y el dotev. <br> En nuestra terminal escribimos: npm i bcrypt dotenv express jsonwebtoken mongoose
+Instalar nodemon en nuestro PC de manera global: npm i -g nodemon
+Tenemos que crear un archivo .env en el que guardaremos los datos: PORT: Número del puerto al que nos conectaremos para trabajar, URI: Ruta de MongoDB, y JWT_SECRET: Clave para el token.<br>
+
+
+##Descripción funcional
 ![Casos-de-uso](https://github.com/AdrianVid/ReforestAccion-Nafarroa/blob/main/Casos%20de%20uso.png)
 En ReforestAcción Nafarroa lo importante son los árboles y en su página web no iba a ser diferente.<br>
 Llevamos un control del número total de árboles plantados, sus distintas clases y las diferentes localidades donde se encuentran. Podemos ver en el mapa donde se encuentra cada arbol. Todo acompañado de documentación, descripccion del proyecto e imágenes.
