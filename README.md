@@ -5,10 +5,11 @@ ReforestAccion Nafarroa es una asociación Navarra sin ánimo de lucro. Su propo
 Con este sitio web quieren tener un mayor impacto en la sociedad, ser mas visibles y poder llegar a mas gente que crea en sus valores, los comparta y quiera formar parte de esta organización. Hacer públicas todas sus plantaciones e informar de futuros eventos y noticias.<br>
 ## Instalacion
 
-Instalar NodeJs y en la terminal de tu proyecto hacer un npm init.
-Instalamos express y mongoose. Necesitaremos tambien bcrypt y jsonwebtoken para gestionar las contraseñas y el dotev. <br> En nuestra terminal escribimos: npm i bcrypt dotenv express jsonwebtoken mongoose
-Instalar nodemon en nuestro PC de manera global: npm i -g nodemon
-Tenemos que crear un archivo .env en el que guardaremos los datos: PORT: Número del puerto al que nos conectaremos para trabajar, URI: Ruta de MongoDB, y JWT_SECRET: Clave para el token.<br>
+1. Instalar NodeJs y en la terminal de tu proyecto hacer un npm init.
+2. Instalamos express y mongoose. Necesitaremos tambien bcrypt y jsonwebtoken para gestionar las contraseñas y el dotev. <br> 
+En nuestra terminal escribimos: npm i bcrypt dotenv express jsonwebtoken mongoose<br>
+3. Instalar nodemon en nuestro PC de manera global: npm i -g nodemon<br>
+4. Tenemos que crear un archivo .env en el que guardaremos los datos: PORT: Número del puerto al que nos conectaremos para trabajar, URI: Ruta de MongoDB, y JWT_SECRET: Clave para el token.<br>
 
 
 ## Descripción funcional
