@@ -3,7 +3,7 @@
 ReforestAccion Nafarroa es una asociación Navarra sin ánimo de lucro. Su proposito es muy claro, plantar la mayor cantidad de arboles posibles en espacios publicos o privados cedidos para tal proposito. Todo esto se lleva a cabo a través de sus socios y voluntarios.
 <br>
 Con este sitio web quieren tener un mayor impacto en la sociedad, ser mas visibles y poder llegar a mas gente que crea en sus valores, los comparta y quiera formar parte de esta organización. Hacer públicas todas sus plantaciones e informar de futuros eventos y noticias.<br>
-##Instalacion
+## Instalacion
 
 Instalar NodeJs y en la terminal de tu proyecto hacer un npm init.
 Instalamos express y mongoose. Necesitaremos tambien bcrypt y jsonwebtoken para gestionar las contraseñas y el dotev. <br> En nuestra terminal escribimos: npm i bcrypt dotenv express jsonwebtoken mongoose
@@ -11,8 +11,8 @@ Instalar nodemon en nuestro PC de manera global: npm i -g nodemon
 Tenemos que crear un archivo .env en el que guardaremos los datos: PORT: Número del puerto al que nos conectaremos para trabajar, URI: Ruta de MongoDB, y JWT_SECRET: Clave para el token.<br>
 
 
-##Descripción funcional
-![Casos-de-uso](https://github.com/AdrianVid/ReforestAccion-Nafarroa/blob/main/Casos%20de%20uso.png)
+## Descripción funcional
+
 En ReforestAcción Nafarroa lo importante son los árboles y en su página web no iba a ser diferente.<br>
 Llevamos un control del número total de árboles plantados, sus distintas clases y las diferentes localidades donde se encuentran. Podemos ver en el mapa donde se encuentra cada arbol. Todo acompañado de documentación, descripccion del proyecto e imágenes.
 <br>
@@ -21,8 +21,9 @@ Cada voluntario podrá ver las plantaciones, inscribirse para participar y tambi
 En todo momentos podemos acceder a todas las plantaciones realizadas por la asociación acompañadas de toda la documentacion: Descripción del proyecto, tipos y cantidad de arboles plantados y número de voluntarios que formaron parte. También contaremos con un seguimiento del proyecto una vez finalizado para poder ver su estado, la conservación y riego.<br>
 A traves de este sitio web gestionamos todos los datos relacionados con nuestros voluntarios, los ayuntamientos colaboradores y personas o empresas que forman parte de alguna manera de ReforestAcción Nafarroa.<br>
 Tenemos un apartado de blog y noticias en el que exponemos temas relacionados con el cambio climático y con la asociación. Contamos con una página de contacto y enlaces a redes sociales.<br>
-
-#Relacion entre modelos
+## Casos de uso
+![Casos-de-uso](https://github.com/AdrianVid/ReforestAccion-Nafarroa/blob/main/Casos%20de%20uso.png)<br>
+## Relacion entre modelos
 
 
 ![Esquema-relacionModelos](https://user-images.githubusercontent.com/91872191/139838533-e09e137b-a8db-404c-8bdc-d2462d8cfd35.png)
